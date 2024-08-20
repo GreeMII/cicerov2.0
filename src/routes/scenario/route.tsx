@@ -1,6 +1,6 @@
 import {Button, Container, Group, rem, Text, Title, TextInput, Accordion, Stack} from "@mantine/core";
 
-import {createFileRoute} from "@tanstack/react-router";
+import {createFileRoute, Link} from "@tanstack/react-router";
 import classes from "./route.module.css"
 import {IconSearch} from "@tabler/icons-react";
 
@@ -12,7 +12,7 @@ const Page: React.FC = () => {
             emoji: '🍎',
             value: 'Apples',
             description:
-                'Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads.',
+                'Crisp and refrehing fruit. Apples are known for their versatility and nutritional benefits. They come in a variety of flavors and are great for snacking, baking, or adding to salads.',
         },
         {
             emoji: '🍌',
@@ -66,16 +66,18 @@ const Page: React.FC = () => {
                             Актуально по сей день
                         </Text>
                     </Stack>
-                    <Button
-                        className={classes.button}
-                        fullWidth
-                        variant="outline"
-                        size="lg"
-                        color="#495057"
-                        radius="xl"
-                    >
-                        Создать договор
-                    </Button>
+                    <Link to="/create-dogovor">
+                        <Button
+                            className={classes.button}
+                            fullWidth
+                            variant="outline"
+                            size="lg"
+                            color="#495057"
+                            radius="xl"
+                        >
+                            Создать договор
+                        </Button>
+                    </Link>
                 </div>
                 <Stack
                     align="stretch"

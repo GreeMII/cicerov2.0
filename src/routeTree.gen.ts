@@ -12,12 +12,18 @@
 
 import { Route as rootRoute } from "./routes/__root";
 import { Route as ScenarioRouteImport } from "./routes/scenario/route";
+import { Route as CreateDogovorRouteImport } from "./routes/create-dogovor/route";
 import { Route as IndexRouteImport } from "./routes/index/route";
 
 // Create/Update Routes
 
 const ScenarioRouteRoute = ScenarioRouteImport.update({
   path: "/scenario",
+  getParentRoute: () => rootRoute,
+} as any);
+
+const CreateDogovorRouteRoute = CreateDogovorRouteImport.update({
+  path: "/create-dogovor",
   getParentRoute: () => rootRoute,
 } as any);
 
@@ -37,6 +43,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof IndexRouteImport;
       parentRoute: typeof rootRoute;
     };
+    "/create-dogovor": {
+      id: "/create-dogovor";
+      path: "/create-dogovor";
+      fullPath: "/create-dogovor";
+      preLoaderRoute: typeof CreateDogovorRouteImport;
+      parentRoute: typeof rootRoute;
+    };
     "/scenario": {
       id: "/scenario";
       path: "/scenario";
@@ -51,6 +64,7 @@ declare module "@tanstack/react-router" {
 
 export const routeTree = rootRoute.addChildren({
   IndexRouteRoute,
+  CreateDogovorRouteRoute,
   ScenarioRouteRoute,
 });
 
@@ -63,11 +77,15 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/create-dogovor",
         "/scenario"
       ]
     },
     "/": {
       "filePath": "index/route.tsx"
+    },
+    "/create-dogovor": {
+      "filePath": "create-dogovor/route.tsx"
     },
     "/scenario": {
       "filePath": "scenario/route.tsx"

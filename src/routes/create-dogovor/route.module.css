@@ -1,0 +1,47 @@
+.container{
+    @apply bg-[#343A40]
+}
+.headerGroup{
+    @apply ml-[5px] mr-[3px];
+    @apply h-[61px] flex flex-row items-center justify-between;
+    @apply xl:ml-[40px] xl:mr-[25px]
+}
+.titleText{
+    @apply text-[14px] text-[#DEE2E6] font-bold
+}
+.previewText{
+    @apply text-[14px] text-[#DEE2E6] font-bold
+}
+.previewGroup{
+    @apply flex gap-x-[20px] xl:gap-x-[60px]
+}
+.buttonGroup{
+    @apply text-[#343A40]
+}
+.Button{
+    @apply rounded-[25px] text-[#343A40];
+}
+
+.containerMain{
+    @apply h-[100vh] w-full;
+    @apply flex flex-row;
+}
+.inputsForm{
+    @apply basis-1/2;
+    @apply bg-[#DEE2E6];
+    @apply pt-[15px] pl-[15px] md:pl-[40px]
+
+}
+.overview{
+    @apply basis-1/2
+}
+
+
+.DataInput {
+    @apply flex items-center pl-[60px] pr-[100px] gap-x-[15px]
+}
+
+
+.dateInput {
+    @apply grow;
+}
