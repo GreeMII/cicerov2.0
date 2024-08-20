@@ -1,0 +1,9 @@
+.Container{
+    @apply flex flex-row;
+}
+.leftSide{
+    @apply basis-1/2;
+}
+.rightSide{
+    @apply basis-1/2;
+}

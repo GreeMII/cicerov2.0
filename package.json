@@ -3,24 +3,52 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mantine/carousel": "^7.12.1",
+    "@mantine/charts": "^7.12.1",
+    "@mantine/code-highlight": "^7.12.1",
+    "@mantine/core": "^7.12.1",
+    "@mantine/dates": "^7.12.1",
+    "@mantine/dropzone": "^7.12.1",
+    "@mantine/form": "^7.12.1",
+    "@mantine/hooks": "^7.12.1",
+    "@mantine/modals": "^7.12.1",
+    "@mantine/notifications": "^7.12.1",
+    "@mantine/nprogress": "^7.12.1",
+    "@mantine/spotlight": "^7.12.1",
+    "@mantine/tiptap": "^7.12.1",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@tabler/icons-react": "^3.12.0",
+    "@tanstack/react-form": "^0.29.1",
+    "@tanstack/react-query": "^5.51.23",
+    "@tanstack/react-router": "^1.47.1",
+    "@tanstack/router-devtools": "^1.48.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tiptap/extension-link": "^2.6.4",
+    "@tiptap/react": "^2.6.4",
+    "@tiptap/starter-kit": "^2.6.4",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.105",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "dayjs": "^1.11.12",
+    "embla-carousel-react": "^8.1.8",
     "react": "^18.3.1",
+    "react-css-modules": "^4.7.11",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
+    "recharts": "^2.12.7",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-routes": "tsr generate",
+    "watch-routes": "tsr watch",
+    "build": "npm run generate-routes && ...",
+    "dev": "npm run watch-routes && ..."
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +67,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@tanstack/router-cli": "^1.47.0",
+    "postcss": "^8.4.41",
+    "postcss-preset-mantine": "^1.17.0",
+    "postcss-simple-vars": "^7.0.1",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.10",
+    "typescript-plugin-css-modules": "^5.1.0"
   }
 }
