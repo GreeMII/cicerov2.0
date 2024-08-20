@@ -1,22 +1,21 @@
-.header {
-    @apply h-[180px] bg-[#DEE2E6];
-    @apply pl-[var(--mantine-spacing-md)] pr-[var(--mantine-spacing-md)];
+
+.inner {
+    @apply h-[180px] flex justify-between items-center;
+    @apply bg-[#DEE2E6];
 
 }
-.inner {
-    @apply h-[180px] ;
-    @apply flex justify-between items-center;
-    @apply md:mx-[45px] sm:mx-[5px];
-}
 .links {
-    @apply flex leading-none px-[8px] py-[12px] gap-[120px];
-    @apply md:mr-[100px]
+    @apply flex px-[8px] py-[12px] gap-x-[100px];
+    @apply md:mr-[100px];
 }
+
 .link {
-    @apply rounded-[var(--mantine-radius-sm)] no-underline;
-    @apply size-[var(--mantine-font-size-sm)] font-light text-[24px] text-[#495057];
+    @apply px-[8px] py-[12px] block no-underline font-medium;
+    @apply font-light text-[24px] text-[#495057];
     @apply hover:font-medium
 }
+
 .logo{
-    @apply size-[var(--mantine-font-size-sm)] text-[#495057] font-extrabold text-[40px];
+    @apply text-[#495057] font-extrabold;
+    @apply md:ml-[45px];
 }

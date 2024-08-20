@@ -1,14 +1,18 @@
 import {useState} from "react";
 import {createFileRoute, Link} from "@tanstack/react-router";
-import {Button, Container, Group, Text, Title} from "@mantine/core";
+import {Button, Container, Group, Text, Title,Stack} from "@mantine/core";
 import classes from "./route.module.css"
 
 const Page: React.FC = () => {
     return (
-        <Container className={classes.Container}>
-            <Group className={classes.group}>
+            <Stack
+                className={classes.group}
+                align="flex-start"
+                justify="flex-start"
+                gap="lg"
+            >
                 <Title className={classes.title}>
-                    Проект <Text className={classes.TitleName}>Cicero</Text>- это удобный инструмент для создания юридически значимых документов.
+                    Проект <div className={classes.TitleName}>Cicero</div>- это удобный инструмент для создания юридически значимых документов.
                 </Title>
                 <Text className={classes.text}>
                     Это быстрый и надёжный способ получить готовый договор или другой юридический
@@ -23,9 +27,7 @@ const Page: React.FC = () => {
                         Создать свой первый документ
                     </Button>
                 </Link>
-
-            </Group>
-        </Container>
+            </Stack>
     );
 }
 

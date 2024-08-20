@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Container, Group, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { Text, Anchor } from '@mantine/core';
+import { Text, Anchor, Title } from '@mantine/core';
 import classes from './__root.module.css';
 import {Link, Outlet, createFileRoute, createRootRouteWithContext} from "@tanstack/react-router";
 import {QueryClient} from "@tanstack/react-query";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import '@mantine/core/styles.css'
 const links = [
     { link: '/', label: 'Главная' },
     { link: '/scenario', label: 'Конструктор' },
@@ -27,10 +28,13 @@ const Header: React.FC = () => {
 
     return (
         <header className={classes.header}>
-            <Container size="md" className={classes.inner}>
-                <Text className={classes.logo} size="xl">Cicero</Text>
-                <Group className={classes.links} visibleFrom="xs">
-                    {items}
+            <Container size="2xl" className={classes.inner}>
+
+                <div className={classes.logo}><Title size="h1" >Cicero</Title></div>
+                <Group gap={2} visibleFrom="xs">
+                    <div className={classes.links}>
+                        {items}
+                    </div>
                 </Group>
 
                 <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
