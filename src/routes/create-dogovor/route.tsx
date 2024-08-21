@@ -2,8 +2,13 @@ import styles from "./route.module.css";
 import {createFileRoute} from "@tanstack/react-router";
 import {Container, Group, Text, Button} from "@mantine/core";
 import classes from "./route.module.css"
-import {DateInput} from "@mantine/dates";
 import { ScrollArea } from '@mantine/core';
+import {DataInput} from "../../components/inputs/data-input/data-input";
+import React from "react";
+import {PhoneInput} from "../../components/inputs/phone-input/phone-input";
+import {RadioInput} from "../../components/inputs/radio-input/radio-input";
+import {StringInput} from "../../components/inputs/string-input/string-input";
+
 
 const Page: React.FC = () => {
     return(
@@ -26,17 +31,26 @@ const Page: React.FC = () => {
             </Container>
             <div className={classes.containerMain}>
                 <div className={classes.inputsForm}>
-                    <ScrollArea h={250} type="auto" scrollbars="y" offsetScrollbars scrollHideDelay={1500}>
-                        <div className={classes.DataInput}>
-                            <Text className={classes.dateLabel}>Дата подписания договора</Text>
-                            <DateInput
-                                className={classes.dateInput}
-                                radius="xs"
-                                placeholder="Дата подписания договора"
-                                variant="filled"
-                                color="#868686"
-                            />
-                        </div>
+                    <ScrollArea className={classes.scrollbar} type="scroll" scrollbars="y" offsetScrollbars scrollHideDelay={1500}>
+                        <DataInput/>
+                        <PhoneInput/>
+                        <RadioInput/>
+                        <StringInput/>
+                        <DataInput/>
+                        <Text className={classes.groupInputTitle}>
+                            Данные о займодавце:
+                        </Text>
+                        <PhoneInput/>
+                        <DataInput/>
+                        <PhoneInput/>
+                        <RadioInput/>
+                        <StringInput/>
+                        <PhoneInput/>
+                        <DataInput/>
+                        <PhoneInput/>
+                        <DataInput/>
+                        <RadioInput/>
+                        <StringInput/>
                     </ScrollArea>
                 </div>
 

@@ -37,7 +37,7 @@ const Header: React.FC = () => {
                     </div>
                 </Group>
 
-                <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+                <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size=" sm"/>
             </Container>
             <Outlet />
             <TanStackRouterDevtools />

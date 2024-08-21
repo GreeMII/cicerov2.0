@@ -36,12 +36,11 @@
     @apply basis-1/2
 }
 
-
-.DataInput {
-    @apply flex items-center pl-[60px] pr-[100px] gap-x-[15px]
+.scrollbar{
+    @apply h-[calc(100vh-241px)];
 }
-
-
-.dateInput {
-    @apply grow;
+.groupInputTitle{
+    @apply text-[16px] text-[#343A40] md:text-[18px] font-bold;
+    @apply my-[30px] md:pl-[30px] md:pr-[70px];
+    @apply flex justify-center
 }
