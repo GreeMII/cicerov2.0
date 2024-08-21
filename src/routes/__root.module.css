@@ -19,3 +19,6 @@
     @apply text-[#495057] font-extrabold;
     @apply md:ml-[45px];
 }
+.smallbar{
+    @apply flex flex-row justify-evenly
+}
