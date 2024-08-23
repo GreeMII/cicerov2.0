@@ -14,27 +14,19 @@ class _TemplatesApi {
 
     getTemplateGroups() {
         return queryOptions({
-            queryKey: [...this.baseQueryKey, "groups"],
-            queryFn: async (): Promise<TemplateGroupDto[]> => {
+            queryKey: [...this.baseQueryKey, "scenario"],
+            queryFn: async (): Promise<(TemplateGroupDto & { templates: TemplateDto[] })[]> => {
                 const { data } = await appAxios.post<Record<string, TemplateDto[]>>("/get-scenarios");
 
-                return objectKeys(data)
-                    .map((name, index) => ({ id: index, name: name }))
-                    .sort((a, b) => b.id - a.id);
+                return objectKeys(data).map((name, index) => ({
+                    id: index,
+                    name: name,
+                    templates: objectValues(data)[index].sort((a, b) => b.id - a.id),
+                }));
             },
         } as const);
     }
 
-    getTemplatesByGroupId(groupId: number) {
-        return queryOptions({
-            queryKey: [...this.getTemplateGroups().queryKey, groupId, "templates"],
-            queryFn: async (): Promise<TemplateDto[]> => {
-                const { data } = await appAxios.post<Record<string, TemplateDto[]>>("/get-scenarios");
-
-                return objectValues(data)[groupId].sort((a, b) => b.id - a.id);
-            },
-        } as const);
-    }
 
     getTemplateById(templateId: number) {
         return queryOptions({

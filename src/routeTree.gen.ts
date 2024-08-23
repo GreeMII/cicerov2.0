@@ -14,6 +14,7 @@ import { Route as rootRoute } from "./routes/__root";
 import { Route as ScenarioRouteImport } from "./routes/scenario/route";
 import { Route as CreateDogovorRouteImport } from "./routes/create-dogovor/route";
 import { Route as IndexRouteImport } from "./routes/index/route";
+import { Route as ScenarioScenarioidScenariogroupScenariogroupRouteImport } from "./routes/scenario/$scenarioid/scenariogroup/$scenariogroup/route";
 
 // Create/Update Routes
 
@@ -31,6 +32,12 @@ const IndexRouteRoute = IndexRouteImport.update({
   path: "/",
   getParentRoute: () => rootRoute,
 } as any);
+
+const ScenarioScenarioidScenariogroupScenariogroupRouteRoute =
+  ScenarioScenarioidScenariogroupScenariogroupRouteImport.update({
+    path: "/$scenarioid/scenariogroup/$scenariogroup",
+    getParentRoute: () => ScenarioRouteRoute,
+  } as any);
 
 // Populate the FileRoutesByPath interface
 
@@ -57,6 +64,13 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof ScenarioRouteImport;
       parentRoute: typeof rootRoute;
     };
+    "/scenario/$scenarioid/scenariogroup/$scenariogroup": {
+      id: "/scenario/$scenarioid/scenariogroup/$scenariogroup";
+      path: "/$scenarioid/scenariogroup/$scenariogroup";
+      fullPath: "/scenario/$scenarioid/scenariogroup/$scenariogroup";
+      preLoaderRoute: typeof ScenarioScenarioidScenariogroupScenariogroupRouteImport;
+      parentRoute: typeof ScenarioRouteImport;
+    };
   }
 }
 
@@ -65,7 +79,9 @@ declare module "@tanstack/react-router" {
 export const routeTree = rootRoute.addChildren({
   IndexRouteRoute,
   CreateDogovorRouteRoute,
-  ScenarioRouteRoute,
+  ScenarioRouteRoute: ScenarioRouteRoute.addChildren({
+    ScenarioScenarioidScenariogroupScenariogroupRouteRoute,
+  }),
 });
 
 /* prettier-ignore-end */
@@ -88,7 +104,14 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "create-dogovor/route.tsx"
     },
     "/scenario": {
-      "filePath": "scenario/route.tsx"
+      "filePath": "scenario/route.tsx",
+      "children": [
+        "/scenario/$scenarioid/scenariogroup/$scenariogroup"
+      ]
+    },
+    "/scenario/$scenarioid/scenariogroup/$scenariogroup": {
+      "filePath": "scenario/$scenarioid/scenariogroup/$scenariogroup/route.tsx",
+      "parent": "/scenario"
     }
   }
 }

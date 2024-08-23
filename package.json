@@ -1,5 +1,8 @@
 {
   "name": "cicerov2.0",
+  "jest": {
+    "verbose": true
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -46,7 +49,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "generate-routes": "tsr generate",
     "watch-routes": "tsr watch",
