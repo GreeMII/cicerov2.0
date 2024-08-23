@@ -1,14 +1,16 @@
 
 import {Button, Stack, Text, Title} from "@mantine/core";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Link, createFileRoute, useParams } from "@tanstack/react-router";
+import {Link, createFileRoute, useParams, getRouteApi} from "@tanstack/react-router";
 import React from "react";
 import { TemplatesApi } from "../../../-api/template.api";
 import styles from "./route.module.css";
 import classes from "../../../route.module.css";
 
 const Page: React.FC = () => {
-    const scenariogroup = useParams()
+
+    const routeApi = getRouteApi('/scenario/$scenarioid/scenariogroup/$scenariogroup');
+    const scenariogroup = routeApi.useParams();
 
     const {data: template} = useSuspenseQuery(TemplatesApi.getTemplateById(parseInt(scenariogroup, 10)));
     return (
