@@ -17,7 +17,6 @@ export interface FieldDto {
     description?: string;
     required: boolean;
 
-    defaultValue?: string | number | boolean;
     variants?: FieldVariant[];
 
     condition?: Condition;

@@ -8,9 +8,17 @@ import React from "react";
 import {PhoneInput} from "../../components/inputs/phone-input/phone-input";
 import {RadioInput} from "../../components/inputs/radio-input/radio-input";
 import {StringInput} from "../../components/inputs/string-input/string-input";
+import {useSuspenseQuery} from "@tanstack/react-query";
+import { z } from "zod";
+import { CreateDocumentApi } from "./-api/CreateDocument.api";
 
 
 const Page: React.FC = () => {
+
+    const { formParams } = Route.useRouteContext();
+
+    const { data: formCells } = useSuspenseQuery(CreateDocumentApi.getFormByTemplateId(formParams.TemplateID));
+
     return(
         <div>
             <Container fluid h={61} className={classes.container}>
@@ -63,5 +71,11 @@ const Page: React.FC = () => {
 }
 
 export const Route = createFileRoute("/create-dogovor")({
+    validateSearch: z.object({
+        TemplateID: z.number(),
+    }),
+    beforeLoad: ({ search }) => ({ formParams: { TemplateID: search.TemplateID } }),
+    loader: ({ context: { queryClient, formParams } }) =>
+        queryClient.ensureQueryData(CreateDocumentApi.getFormByTemplateId(formParams.TemplateID)),
     component: Page,
 });
