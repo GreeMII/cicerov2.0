@@ -33,7 +33,7 @@ const Page: React.FC = () => {
                                 <Accordion.Panel>
                                     <Link
                                         key={template.id}
-                                        to="/scenario/$scenarioid/scenariogroup/$scenariogroup"
+                                        to="/create-dogovor/$templateId"
                                         params={{templateId: template.id.toString() }}
                                         search={{}}
                                     >

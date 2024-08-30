@@ -1,5 +1,5 @@
 import styles from "./route.module.css";
-import {createFileRoute} from "@tanstack/react-router";
+import {createFileRoute, useParams, useRouteContext} from "@tanstack/react-router";
 import {Container, Group, Text, Button} from "@mantine/core";
 import classes from "./route.module.css"
 import { ScrollArea } from '@mantine/core';
@@ -15,10 +15,9 @@ import { CreateDocumentApi } from "./-api/CreateDocument.api";
 
 const Page: React.FC = () => {
 
-    const { formParams } = Route.useRouteContext();
+    const { templateId } = useParams(); // Access templateId from route params
 
-    const { data: formCells } = useSuspenseQuery(CreateDocumentApi.getFormByTemplateId(formParams.TemplateID));
-
+    const { data: formCells } = useSuspenseQuery(CreateDocumentApi.getFormByTemplateId(parseInt(templateId, 10)));
     return(
         <div>
             <Container fluid h={61} className={classes.container}>
@@ -70,12 +69,12 @@ const Page: React.FC = () => {
     )
 }
 
-export const Route = createFileRoute("/create-dogovor")({
+export const Route = createFileRoute("/create-dogovor/$templateId  ")({
     validateSearch: z.object({
-        TemplateID: z.number(),
+        templateId: z.number(),
     }),
-    beforeLoad: ({ search }) => ({ formParams: { TemplateID: search.TemplateID } }),
-    loader: ({ context: { queryClient, formParams } }) =>
-        queryClient.ensureQueryData(CreateDocumentApi.getFormByTemplateId(formParams.TemplateID)),
+    beforeLoad: ({ search }) => ({ formParams: { templateId: search.templateId } }),
+    loader: ({ context: { queryClient }, params }) =>
+        queryClient.ensureQueryData(CreateDocumentApi.getFormByTemplateId(parseInt(params.templateId, 10))),
     component: Page,
 });

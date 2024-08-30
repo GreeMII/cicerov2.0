@@ -13,7 +13,6 @@ const Page: React.FC = () => {
     const scenariogroup = routeApi.useParams();
 
     const {data: template} = useSuspenseQuery(TemplatesApi.getTemplateById(parseInt(scenariogroup, 10)));
-    const TemplateID: number = template.id;
     return (
         <div className={classes.rightSide}>
             <div className={classes.mainRS}>
@@ -29,7 +28,7 @@ const Page: React.FC = () => {
                         {template.category}
                     </Text>
                 </Stack>
-                <Link to="/create-dogovor" search={{ scenariogroup: parseInt(scenariogroup, 10) }}>
+                <Link to={`/create-dogovor/${template.id}`} search={{ scenariogroup: parseInt(scenariogroup, 10) }}>
                     <Button
                         className={classes.button}
                         fullWidth
@@ -61,7 +60,7 @@ const Page: React.FC = () => {
 
 
 export const Route = createFileRoute("/scenario/$scenarioid/scenariogroup/$scenariogroup")({
-    loader: ({params: {TemplateID}, context: {queryClient}}) =>
-        queryClient.ensureQueryData(TemplatesApi.getTemplateById(parseInt(TemplateID, 10))),
+    loader: ({params: {scenariogroup}, context: {queryClient}}) =>
+        queryClient.ensureQueryData(TemplatesApi.getTemplateById(parseInt(scenariogroup, 10))),
     component: Page,
 });
