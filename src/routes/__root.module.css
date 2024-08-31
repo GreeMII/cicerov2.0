@@ -5,8 +5,21 @@
 
 }
 .links {
-    @apply flex px-[8px] py-[12px] gap-x-[100px];
-    @apply md:mr-[100px];
+    @apply flex px-[8px] py-[12px] gap-x-[20px];
+    @apply md:mr-[25px];
+}
+.linksItem{
+    @apply flex items-center gap-x-[22px] justify-center;
+    @apply hover:gap-x-[8px];
+    @apply mr-[15px]
+}
+.linksReg{
+    @apply grid items-end gap-y-[15px] text-center
+}
+.ButtonLink{
+}
+.linkBut{
+    @apply font-light text-[#495057] text-[20px];
 }
 
 .link {

@@ -30,6 +30,11 @@ const links = [
     { link: '/scenario', label: 'Конструктор' },
 ];
 
+const linksReg = [
+    { link: '/login', label: "Логин"},
+    { link: '/register', label: "Регистрация"}
+]
+
 const Header: React.FC = () => {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
@@ -43,14 +48,29 @@ const Header: React.FC = () => {
             {link.label}
         </Link>
     ));
+    const itemsReg = linksReg.map((link_reg) => (
+        <Button className={classes.ButtonLink} size="lg" variant="outline" color="#495057" radius="lg">
+            <Link
+                search={{}}
+                to={link_reg.link}
+                className={classes.linkBut}
+            >
+                {link_reg.label}
+            </Link>
+        </Button>
+
+    ));
 
     return (
         <header className={classes.header}>
             <Container size="2xl" className={classes.inner}>
                 <div className={classes.logo}><Title size="h1">Cicero</Title></div>
-                <Group gap={2} visibleFrom="sm">
-                    <div className={classes.links}>
+                <Group gap={2} visibleFrom="sm" className={classes.links}>
+                    <div className={classes.linksItem}>
                         {items}
+                    </div>
+                    <div className={classes.linksReg}>
+                        {itemsReg}
                     </div>
                 </Group>
                 <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm"/>
@@ -71,6 +91,8 @@ const Header: React.FC = () => {
                 <div className={classes.smallbar}>
                     {items}
                 </div>
+                <Divider my="sm"/>
+
 
             </Drawer>
             <Outlet/>

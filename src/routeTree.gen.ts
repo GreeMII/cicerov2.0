@@ -12,6 +12,8 @@
 
 import { Route as rootRoute } from "./routes/__root";
 import { Route as ScenarioRouteImport } from "./routes/scenario/route";
+import { Route as RegisterRouteImport } from "./routes/register/route";
+import { Route as LoginRouteImport } from "./routes/login/route";
 import { Route as CreateDogovorRouteImport } from "./routes/create-dogovor/route";
 import { Route as IndexRouteImport } from "./routes/index/route";
 
@@ -19,6 +21,16 @@ import { Route as IndexRouteImport } from "./routes/index/route";
 
 const ScenarioRouteRoute = ScenarioRouteImport.update({
   path: "/scenario",
+  getParentRoute: () => rootRoute,
+} as any);
+
+const RegisterRouteRoute = RegisterRouteImport.update({
+  path: "/register",
+  getParentRoute: () => rootRoute,
+} as any);
+
+const LoginRouteRoute = LoginRouteImport.update({
+  path: "/login",
   getParentRoute: () => rootRoute,
 } as any);
 
@@ -50,6 +62,20 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof CreateDogovorRouteImport;
       parentRoute: typeof rootRoute;
     };
+    "/login": {
+      id: "/login";
+      path: "/login";
+      fullPath: "/login";
+      preLoaderRoute: typeof LoginRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    "/register": {
+      id: "/register";
+      path: "/register";
+      fullPath: "/register";
+      preLoaderRoute: typeof RegisterRouteImport;
+      parentRoute: typeof rootRoute;
+    };
     "/scenario": {
       id: "/scenario";
       path: "/scenario";
@@ -65,6 +91,8 @@ declare module "@tanstack/react-router" {
 export const routeTree = rootRoute.addChildren({
   IndexRouteRoute,
   CreateDogovorRouteRoute,
+  LoginRouteRoute,
+  RegisterRouteRoute,
   ScenarioRouteRoute,
 });
 
@@ -78,6 +106,8 @@ export const routeTree = rootRoute.addChildren({
       "children": [
         "/",
         "/create-dogovor",
+        "/login",
+        "/register",
         "/scenario"
       ]
     },
@@ -86,6 +116,12 @@ export const routeTree = rootRoute.addChildren({
     },
     "/create-dogovor": {
       "filePath": "create-dogovor/route.tsx"
+    },
+    "/login": {
+      "filePath": "login/route.tsx"
+    },
+    "/register": {
+      "filePath": "register/route.tsx"
     },
     "/scenario": {
       "filePath": "scenario/route.tsx"
